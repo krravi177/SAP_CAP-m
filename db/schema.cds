@@ -67,5 +67,3 @@ entity SubProjects {
     modifiedByEmp    : Association to Employees on modifiedByEmp.empCode = modifiedBy;
     assignedToEmp    : Association to Employees on assignedToEmp.empCode = assignedToE;  
 }
- 
-
