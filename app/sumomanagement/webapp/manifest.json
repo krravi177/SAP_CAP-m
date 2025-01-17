@@ -16,7 +16,7 @@
       "toolsId": "7cc14b9b-e7b5-4985-9eec-1c062604a66b"
     },
     "dataSources": {
-      "mainService": {
+      "ProjectManagementService": {
         "uri": "/odata/v4/ProjectManagementService/",
         "type": "OData",
         "settings": {

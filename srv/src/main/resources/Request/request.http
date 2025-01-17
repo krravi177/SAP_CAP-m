@@ -4,7 +4,7 @@ Content-Type: application/json
  
 {
   "projectId": 1,
-  "projectName": "New Project",
+  "projectName": "SMDT Project",
   "timeAssigned": 100,
   "assignedToP": 101,
   "projectChanges": 1,
@@ -67,13 +67,13 @@ GET http://localhost:8080/odata/v4/ProjectManagementService/Projects?$filter=sta
 
 
 ### Create SubProject
-POST http://localhost:8080/odata/v4/SubProjectsManagementService/SubProjects HTTP/1.1
+POST http://localhost:8080/odata/v4/ProjectManagementService/SubProjects HTTP/1.1
 Content-Type: application/json
  
 {
   "moduleId": 2,
   "projectId": 1,
-  "moduleName": "SubProject A",
+  "moduleName": "SubProject SDMTTech",
   "assignedToE": 102,
   "projectManagerId": 101,
   "timeAssigned": 80,
@@ -85,16 +85,16 @@ Content-Type: application/json
 ###
  
 ### Get SubProject by ID
-GET http://localhost:8080/odata/v4/SubProjectsManagementService/SubProjects(2) HTTP/1.1
+GET http://localhost:8080/odata/v4/ProjectManagementService/SubProjects(2) HTTP/1.1
  
 ###
 
 ### Update SubProject
-PUT http://localhost:8080/odata/v4/SubProjectsManagementService/SubProjects(2) HTTP/1.1
+PUT http://localhost:8080/odata/v4/ProjectManagementService/SubProjects(2) HTTP/1.1
 Content-Type: application/json
  
 {
-  "moduleName": "Updated SubProject A",
+  "moduleName": "Updated TechSDMT Project",
   "moduleStatus": "In Progress",
   "createdBy": 556,
   "modifiedBy": 556
@@ -103,29 +103,29 @@ Content-Type: application/json
 
 
 ### Delete SubProject
-DELETE http://localhost:8080/odata/v4/SubProjectsManagementService/SubProjects(2) HTTP/1.1
+DELETE http://localhost:8080/odata/v4/ProjectManagementService/SubProjects(2) HTTP/1.1
 Content-Type: application/json
  
 {}
 
  
 ### Get SubProjects by Project ID
-GET http://localhost:8080/odata/v4/SubProjectsManagementService/SubProjects?$filter=projectId eq 1 HTTP/1.1
+GET http://localhost:8080/odata/v4/ProjectManagementService/SubProjects?$filter=projectId eq 1 HTTP/1.1
  
 ###
  
 ### Get SubProjects by Assigned Employee ID
-GET http://localhost:8080/odata/v4/SubProjectsManagementService/SubProjects?$filter=assignedToE eq 102 HTTP/1.1
+GET http://localhost:8080/odata/v4/ProjectManagementService/SubProjects?$filter=assignedToE eq 102 HTTP/1.1
  
 
   
 ### Create Employee
-POST http://localhost:8080/odata/v4/EmployeeManagementService/Employees HTTP/1.1
+POST http://localhost:8080/odata/v4/ProjectManagementService/Employees HTTP/1.1
 Content-Type: application/json
  
 {
   "empCode": 101,
-  "empName": "John Doe",
+  "empName": "Ravindra Kumar",
   "projectId": 1,
   "rating": 4,
   "timeTaken": 120,
@@ -140,15 +140,15 @@ Content-Type: application/json
 ###
  
 ### Get Employee by ID
-GET http://localhost:8080/odata/v4/EmployeeManagementService/Employees(101) HTTP/1.1
+GET http://localhost:8080/odata/v4/ProjectManagementService/Employees(101) HTTP/1.1
  
  
 ### Update Employee
-PUT http://localhost:8080/odata/v4/EmployeeManagementService/Employees(101) HTTP/1.1
+PUT http://localhost:8080/odata/v4/ProjectManagementService/Employees(101) HTTP/1.1
 Content-Type: application/json
  
 {
-  "empName": "John Doe",
+  "empName": "Shivam SDMT",
   "projectId": 1,
   "rating": 5,
   "timeTaken": 85,
@@ -162,16 +162,16 @@ Content-Type: application/json
 
 
 ### Search for Employee by Name
-GET http://localhost:8080/odata/v4/EmployeesManagementService/Employees?$filter=empName eq 'John Doe' HTTP/1.1
+GET http://localhost:8080/odata/v4/ProjectManagementService/Employees?$filter=empName eq 'Ravindra Kumar' HTTP/1.1
  
 ###
  
 ### Get Employees by Manager ID
-GET http://localhost:8080/odata/v4/EmployeeManagementService/Employees?$filter=managerId eq 103 HTTP/1.1
+GET http://localhost:8080/odata/v4/ProjectManagementService/Employees?$filter=managerId eq 103 HTTP/1.1
  
  
 ### Delete Employee
-DELETE http://localhost:8080/odata/v4/EmployeeManagementService/Employees(101) HTTP/1.1
+DELETE http://localhost:8080/odata/v4/ProjectManagementService/Employees(101) HTTP/1.1
 Content-Type: application/json
  
 {}
@@ -182,14 +182,14 @@ Content-Type: application/json
 
 ### Generate Project Report
 
-GET http://localhost:8080/odata/v4/ReportService/generateProjectReport?$filter=status eq 'Active' and managerName eq 'John Doe' HTTP/1.1
+GET http://localhost:8080/odata/v4/ProjectManagementService/generateProjectReport?$filter=status eq 'Active' and managerName eq 'John Doe' HTTP/1.1
  
 ###
  
 ### Generate Employee Report
-GET http://localhost:8080/odata/v4/ReportService/generateEmployeeReport?$filter=empCode eq 101 and startDate eq '2025-01-01' and endDate eq '2025-12-31' HTTP/1.1
+GET http://localhost:8080/odata/v4/ProjectManagementService/generateEmployeeReport?$filter=empCode eq 101 and startDate eq '2025-01-01' and endDate eq '2025-12-31' HTTP/1.1
  
 ### Generate SubProject Report
-GET http://localhost:8080/odata/v4/ReportService/generateSubProjectReport?$filter=projectId eq 1 and status eq 'Active' and startDate eq '2025-01-01' and endDate eq '2025-06-01' HTTP/1.1
+GET http://localhost:8080/odata/v4/ProjectManagementService/generateSubProjectReport?$filter=projectId eq 1 and status eq 'Active' and startDate eq '2025-01-01' and endDate eq '2025-06-01' HTTP/1.1
  
 

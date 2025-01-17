@@ -1,6 +1,67 @@
-<mvc:View controllerName="sumomanagement.controller.View1"
+<mvc:View
+    controllerName="sumomanagement.controller.View1"
+    xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns:plugins="sap.m.plugins"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:core="sap.ui.core"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    height="100%">
+   
     <Page id="page" title="{i18n>title}">
+        <!-- Dropdown for Menu Driven Options -->
+        <headerContent>
+            <HBox id="_IDGenHBox" justifyContent="End">  <!-- Align the dropdown to the right -->
+                <Select id="dropdownSelect" forceSelection="true" change="onSelectChange">
+                    <items>
+                        <core:Item id="item1" key="1" text="Manage Projects" />
+                        <core:Item id="item2" key="2" text="Manage Employees" />
+                    </items>
+                </Select>
+                <Button id="_IDGenButton" icon="sap-icon://sort" tooltip="Sort Categories" press="onOpenSortDialog"/>
+            </HBox>
+        </headerContent>
+       
+        <!-- Content Section -->
+        <VBox id="_IDGenVBox" fitContainer="true">
+            <!-- Smart Filter Bar -->
+            <smartFilterBar:SmartFilterBar
+                id="smartFilterBar"
+                entitySet="Projects"
+                persistencyKey="SmartFilter_Explored">
+               
+                <smartFilterBar:layoutData>
+                    <FlexItemData id="_IDGenFlexItemData" shrinkFactor="0" />
+                </smartFilterBar:layoutData>
+            </smartFilterBar:SmartFilterBar>
+           
+            <!-- Smart Table -->
+            <smartTable:SmartTable
+                id="_IDGenSmartTable"
+                entitySet="Projects"
+                smartFilterId="smartFilterBar"
+                enableExport="true"
+                beforeExport="onBeforeExport"
+                useVariantManagement="false"
+                useTablePersonalisation="true"
+                header="Manage Projects"
+                showRowCount="true"
+                persistencyKey="SmartTableRefApp_Explored"
+                enableAutoBinding="true"
+                class="sapUiResponsiveContentPadding"
+                enableAutoColumnWidth="true"
+                app:preserveDecimals="false">
+               
+                <smartTable:layoutData>
+                    <FlexItemData id="_IDGenFlexItemData1" growFactor="1" baseSize="0%" />
+                </smartTable:layoutData>
+               
+                <smartTable:copyProvider>
+                    <plugins:CopyProvider id="_IDGenCopyProvider1" />
+                </smartTable:copyProvider>
+            </smartTable:SmartTable>
+        </VBox>
     </Page>
 </mvc:View>
+ 
